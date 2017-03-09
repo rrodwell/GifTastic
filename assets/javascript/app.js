@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var topics = ["GeorgiaTech", "Football", "Ironman", "CaptainAmerica"];
+  var topics = ["penguin", "eagle", "parrot", "flamingo"];
 
 
   function display(){
@@ -15,19 +15,23 @@ $(document).ready(function() {
         console.log("response is " +response);
         var results = response.data;
 
+        var mainDiv = $("<div>");
+        mainDiv.addClass("mainSection")
         for (var i = 0; i < results.length; i++) {
           var topicDiv = $("<div>");
+          topicDiv.addClass("topic-div");
           var topicRating = $("<p>").text("Rating: " + results[i].rating);
           var topicImg = $("<img>");
           topicImg.addClass("gif");
-          topicImg.attr("data-state", "active");
+          topicImg.attr("data-state", "still");
           topicImg.attr("data-stop", results[i].images.fixed_height_still.url);
           topicImg.attr("data-start", results[i].images.fixed_height.url);
-          topicImg.attr("src", results[i].images.fixed_height.url);
+          topicImg.attr("src", results[i].images.fixed_height_still.url);
           topicDiv.append(topicRating);
           topicDiv.append(topicImg);
-          $("#gifArea").prepend(topicDiv);
+          mainDiv.prepend(topicDiv);
         }
+        $("#gifArea").html(mainDiv);
       });
     };
 
