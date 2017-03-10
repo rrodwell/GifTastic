@@ -29,7 +29,7 @@ $(document).ready(function() {
           topicImg.attr("src", results[i].images.fixed_height_still.url);
           topicDiv.append(topicRating);
           topicDiv.append(topicImg);
-          mainDiv.prepend(topicDiv);
+          mainDiv.append(topicDiv);
         }
         $("#gifArea").html(mainDiv);
       });
@@ -41,7 +41,7 @@ $(document).ready(function() {
     $("#buttonArea").empty();
     for(var i = 0; i < topics.length; i++){
       var button = $("<button>");
-      button.addClass("topic");
+      button.addClass("topic").addClass("btn btn-primary");
       button.attr("data-name", topics[i]);
       button.text(topics[i]);
       $("#buttonArea").append(button);
@@ -59,6 +59,14 @@ $(document).ready(function() {
       $(this).attr("data-state", "still");
     }
   };
+
+  $("#add-topic").on("click", function(event) {
+
+    event.preventDefault();
+    var newButton = $("#topic-input").val().trim();
+    topics.push(newButton);
+    createButtons();
+  });
 
   $(document).on("click", ".topic", display);
 

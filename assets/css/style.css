@@ -1,0 +1,23 @@
+.button-section{
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.btn{
+  margin: 2px;
+}
+
+.main-section{
+  float: left;
+  width: 60%;
+  margin-left: 40px;
+}
+.input-section{
+  float: right;
+  width: 30%;
+  margin-right: 40px;
+}
+
+#topic-input{
+  width: 100%;
+}
